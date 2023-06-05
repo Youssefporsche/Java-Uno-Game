@@ -158,7 +158,7 @@ NumberCard numberCard =new NumberCard(i, null);
 		right.setBackground(Color.red);
 		right.setPreferredSize(new Dimension(100,100));
 		
-		  up   =  new JPanel();
+		  up =  new JPanel();
 		up.setBackground(Color.green);
 		up.setPreferredSize(new Dimension(100,100));
 		
@@ -538,9 +538,10 @@ NumberCard numberCard =new NumberCard(i, null);
 			
 			players.add(p1);
 			 g.distribute();
-			int Hand = p1.getHand().size();
-			JLabel l1 = new JLabel("remaining" + Hand + "Cards");
+			int Hand1 = p1.getHand().size();
+			JLabel l1 = new JLabel("remaining" + Hand1 + "Cards");
 			left.add(l1);
+			
 			
 		}
 		if(e.getSource()==add2){
@@ -548,6 +549,10 @@ NumberCard numberCard =new NumberCard(i, null);
 			p2.getName().equals(Submition2.getText());
 			Submition_right.setEditable(false);
 			players.add(p2);
+			g.distribute();
+			int Hand2 = p2.getHand().size();
+			JLabel l1 = new JLabel("remaining" + Hand2 + "Cards");
+			right.add(l1);
 		add2.setEnabled(false);	
 		add3.setEnabled(true);
 			play.setEnabled(true);
@@ -557,9 +562,15 @@ NumberCard numberCard =new NumberCard(i, null);
 			p3.getName().equals(Submition3.getText());
 			Submition_up.setText(Submition3.getText());
 			Submition_up.setEditable(false);
+			players.add(p3);
+			g.distribute();
+			int Hand3 = p3.getHand().size();
+			JLabel l1 = new JLabel("remaining" + Hand3 + "Cards");
+			up.add(l1);
+
 			add3.setEnabled(false);	
 			add4.setEnabled(true);
-			players.add(p3);
+
 			}
 		if(e.getSource()==add4){
 			p4.getName().equals(Submition4.getText());
@@ -567,11 +578,16 @@ NumberCard numberCard =new NumberCard(i, null);
 			Submition_down.setEditable(false);
 			add4.setEnabled(false);
 			players.add(p4);
+			g.distribute();
+			int Hand4 = p4.getHand().size();
+			JLabel l1 = new JLabel("remaining" + Hand4 + "Cards");
+			down.add(l1);
 			}
 		if(e.getSource()==play)  {
 			if(!add1.isEnabled()  && !add2.isEnabled()) {
 				
-				
+				int hand = players.get(0).getHand().size() ;
+			hand-- ;
 			submition.dispose();
 
 			window.setVisible(true);
@@ -614,7 +630,7 @@ NumberCard numberCard =new NumberCard(i, null);
 			playButton.setEnabled(true);
 			//game.endTurn();
 			game.getNextPlayer();
-			JOptionPane.showMessageDialog(null, " Who is next to play", null, JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(null, " Next Player please", null, JOptionPane.PLAIN_MESSAGE);
 			
 		}else {
 			JOptionPane.showMessageDialog(null," you must play or Draw to end turn ", null, JOptionPane.PLAIN_MESSAGE);
